@@ -1,4 +1,4 @@
-import { Province, SoftwareType, Vendor } from './types';
+import { Province, SoftwareType, Vendor, Industry, CompanySize } from './types';
 
 export const VENDORS: Vendor[] = [
   {
@@ -12,6 +12,8 @@ export const VENDORS: Vendor[] = [
       province: Province.ON
     },
     softwareTypes: [SoftwareType.ECOM, SoftwareType.FIN],
+    industries: [Industry.RETAIL],
+    companySize: [CompanySize.SMALL, CompanySize.MEDIUM, CompanySize.LARGE],
     dataStorage: {
       location: 'Global (Canada, US, Europe)',
       providers: ['Google Cloud Platform (GCP)'],
@@ -27,6 +29,32 @@ export const VENDORS: Vendor[] = [
     description: 'A global commerce company, providing tools to start, grow, market, and manage a retail business of any size.'
   },
   {
+    id: 'achievers',
+    name: 'Achievers',
+    solutions: ['Achievers Recognize', 'Achievers Reward', 'Achievers Celebrate', 'Achievers Listen'],
+    website: 'https://www.achievers.com',
+    linkedin: 'https://www.linkedin.com/company/achievers',
+    headquarters: {
+      city: 'Toronto',
+      province: Province.ON
+    },
+    softwareTypes: [SoftwareType.HR],
+    industries: [Industry.CROSS_INDUSTRY],
+    companySize: [CompanySize.MEDIUM, CompanySize.LARGE],
+    dataStorage: {
+      location: 'Canada, US, Europe',
+      providers: ['AWS'],
+      details: 'Achievers leverages AWS for its global infrastructure, offering data residency options in Canada to meet local compliance requirements.'
+    },
+    pros: ['Global rewards marketplace', 'High activation and engagement rates', 'Strong mobile experience', 'Seamless integrations with Slack and Microsoft Teams'],
+    cons: ['Enterprise-focused pricing', 'Implementation can be complex for smaller teams'],
+    reviews: [
+      { platform: 'G2', rating: 4.3, count: 600, url: 'https://www.g2.com/products/achievers/reviews' },
+      { platform: 'Capterra', rating: 4.5, count: 400, url: 'https://www.capterra.com/p/121852/Achievers/' }
+    ],
+    description: 'An employee recognition and engagement platform that helps organizations build a culture of appreciation through rewards, social recognition, and employee voice tools.'
+  },
+  {
     id: 'opentext',
     name: 'OpenText',
     solutions: ['Content Cloud', 'Experience Cloud', 'Business Network Cloud', 'Security Cloud'],
@@ -37,6 +65,8 @@ export const VENDORS: Vendor[] = [
       province: Province.ON
     },
     softwareTypes: [SoftwareType.ERP, SoftwareType.SEC, SoftwareType.AI],
+    industries: [Industry.CROSS_INDUSTRY, Industry.GOVERNMENT, Industry.FINANCE],
+    companySize: [CompanySize.LARGE],
     dataStorage: {
       location: 'Canada, US, Europe, Asia',
       providers: ['Microsoft Azure', 'AWS', 'Google Cloud'],
@@ -60,6 +90,8 @@ export const VENDORS: Vendor[] = [
       province: Province.QC
     },
     softwareTypes: [SoftwareType.ERP, SoftwareType.ITS, SoftwareType.FIN],
+    industries: [Industry.GOVERNMENT, Industry.FINANCE, Industry.TECH],
+    companySize: [CompanySize.LARGE],
     dataStorage: {
       location: 'Canada (Montreal, Toronto), Global',
       providers: ['Microsoft Azure', 'AWS', 'Private Cloud'],
@@ -83,6 +115,8 @@ export const VENDORS: Vendor[] = [
       province: Province.ON
     },
     softwareTypes: [SoftwareType.SCM, SoftwareType.AI],
+    industries: [Industry.MANUFACTURING, Industry.LOGISTICS, Industry.RETAIL],
+    companySize: [CompanySize.LARGE],
     dataStorage: {
       location: 'Canada, US, Europe, Japan',
       providers: ['Microsoft Azure'],
@@ -890,25 +924,25 @@ export const VENDORS: Vendor[] = [
   {
     id: 'introhive',
     name: 'Introhive',
-    solutions: ['Introhive Platform'],
-    website: 'https://www.introhive.com',
-    linkedin: 'https://www.linkedin.com/company/introhive',
+    solutions: ['Relationship Intelligence Platform', 'CRM Automation', 'Data Enrichment'],
+    website: 'https://www.introhive.com/',
+    linkedin: 'https://www.linkedin.com/company/introhive/',
     headquarters: {
       city: 'Fredericton',
       province: Province.NB
     },
     softwareTypes: [SoftwareType.CRM, SoftwareType.AI],
+    industries: [Industry.PROFESSIONAL_SERVICES, Industry.FINANCE, Industry.TECH],
+    companySize: [CompanySize.MEDIUM, CompanySize.LARGE],
     dataStorage: {
-      location: 'Canada, US, Europe',
-      providers: ['AWS', 'Microsoft Azure'],
-      details: 'Introhive utilizes major cloud providers for its relationship intelligence platform, with strict enterprise security standards.'
+      location: 'Canada, US, UK',
+      providers: ['AWS', 'Azure'],
+      details: 'Introhive is a cloud-based relationship intelligence platform that integrates with existing CRMs to automate data entry and provide insights.'
     },
-    pros: ['AI-powered relationship intelligence', 'Automated data entry', 'Strong CRM integration'],
-    cons: ['Requires significant data for accuracy', 'Privacy concerns for some users'],
-    reviews: [
-      { platform: 'G2', rating: 4.3, count: 100, url: 'https://www.g2.com/products/introhive/reviews' }
-    ],
-    description: 'A relationship intelligence and sales acceleration platform for professional services.'
+    pros: ['Automates CRM data entry', 'Unlocks hidden relationship insights', 'Strong integration with major CRMs'],
+    cons: ['Requires existing CRM infrastructure', 'Best suited for professional services firms'],
+    reviews: [],
+    description: 'A leading relationship intelligence platform that helps organizations unlock the value of their relationships and drive revenue growth.'
   },
   {
     id: 'proposify',
@@ -2204,5 +2238,655 @@ export const VENDORS: Vendor[] = [
     cons: ['Requires employee participation', 'Insights depend on honest feedback'],
     reviews: [],
     description: 'A provider of diagnostic tools and analytics for measuring employee experience and organizational performance.'
+  },
+  {
+    id: 'diversio',
+    name: 'Diversio',
+    solutions: ['Diversio Platform', 'DEI Analytics', 'Training Workshops', 'Strategic Consulting'],
+    website: 'https://diversio.com',
+    linkedin: 'https://www.linkedin.com/company/diversio-inc',
+    headquarters: {
+      city: 'Toronto',
+      province: Province.ON
+    },
+    softwareTypes: [SoftwareType.HR, SoftwareType.AI],
+    dataStorage: {
+      location: 'Canada, US, UK, Europe',
+      providers: ['AWS'],
+      details: 'Diversio uses AI-powered analytics to measure and improve workplace inclusion, with secure data handling and global compliance standards.'
+    },
+    pros: ['AI-powered DEI insights', 'Academically validated framework', 'Global benchmarks'],
+    cons: ['Requires employee participation for data accuracy', 'Can be complex for small organizations'],
+    reviews: [],
+    description: 'A workplace DEI (Diversity, Equity, and Inclusion) platform that uses AI to measure, track, and improve employee experience.'
+  },
+  {
+    id: 'esentire',
+    name: 'eSentire',
+    solutions: ['Managed Detection and Response (MDR)', 'Continuous Threat Exposure Management (CTEM)', 'Digital Forensics and Incident Response (DFIR)', 'Atlas AI Security Operations Platform'],
+    website: 'https://www.esentire.com',
+    linkedin: 'https://www.linkedin.com/company/esentire',
+    headquarters: {
+      city: 'Waterloo',
+      province: Province.ON
+    },
+    softwareTypes: [SoftwareType.SEC, SoftwareType.AI],
+    dataStorage: {
+      location: 'Global (Canada, US, Europe)',
+      providers: ['AWS', 'Microsoft Azure'],
+      details: 'eSentire operates a global security infrastructure with high-security data centers and cloud redundancy for its Atlas AI platform.'
+    },
+    pros: ['24/7 SOC-as-a-Service', 'AI-driven threat detection (Atlas AI)', 'Elite Threat Hunting', 'Rapid incident response'],
+    cons: ['Can be expensive for small businesses', 'Complex implementation for multi-signal environments'],
+    reviews: [
+      { platform: 'G2', rating: 4.6, count: 282, url: 'https://www.g2.com/products/esentire-managed-detection-and-response-mdr/reviews' }
+    ],
+    description: 'The authority in Managed Detection and Response (MDR), protecting critical data and applications from known and unknown cyber threats with 24/7 threat hunting and AI-powered security operations.'
+  },
+  {
+    id: 'gambitid',
+    name: 'Gambit ID',
+    solutions: ['Gambit ID Check™', 'Security Screening', 'Background Checks', 'RCMP-certified Fingerprinting'],
+    website: 'https://www.gambitid.com',
+    linkedin: 'https://www.linkedin.com/company/gambit-id/',
+    headquarters: {
+      city: 'Ottawa',
+      province: Province.ON
+    },
+    softwareTypes: [SoftwareType.SEC, SoftwareType.HR],
+    dataStorage: {
+      location: 'Canada, US',
+      providers: ['AWS'],
+      details: 'Gambit ID maintains high security standards with ISO 27001, 27017, 27018, and SOC 2 Type II certifications, ensuring secure identity management and background screening.'
+    },
+    pros: ['RCMP accredited', 'Fully automated adjudication', 'Real-time status tracking', 'ISO and SOC 2 certified'],
+    cons: ['Highly specialized niche', 'Requires physical presence for fingerprinting in some cases'],
+    reviews: [],
+    description: 'A world leader in security screening and background checks, providing automated identity management solutions for governments and corporations.'
+  },
+  {
+    id: 'hostalky',
+    name: 'HosTalky',
+    solutions: ['&CareID', 'AI Scribe', 'AI-powered Chat', 'Healthcare Communication Hub'],
+    website: 'https://www.hostalky.com',
+    linkedin: 'https://www.linkedin.com/company/hostalky',
+    headquarters: {
+      city: 'Mississauga',
+      province: Province.ON
+    },
+    softwareTypes: [SoftwareType.HR, SoftwareType.AI],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['AWS'],
+      details: 'HosTalky provides a secure and reliable platform designed specifically for healthcare teams, ensuring data privacy and compliance with healthcare standards.'
+    },
+    pros: ['Built exclusively for healthcare', 'AI Scribe for automated documentation', 'Intuitive and easy to use', 'Secure professional networking'],
+    cons: ['Requires team-wide adoption for maximum effectiveness', 'Relatively new platform in the market'],
+    reviews: [],
+    description: 'An AI-powered communication and collaboration app built exclusively for healthcare professionals to streamline workflows and improve care quality.'
+  },
+  {
+    id: 'isacybersecurity',
+    name: 'ISA Cybersecurity',
+    solutions: ['Assure 360', 'Govern 360', 'Detect 360', 'Respond 360', 'Protect 360'],
+    website: 'https://isacybersecurity.com',
+    linkedin: 'https://www.linkedin.com/company/isacybersecurity/',
+    headquarters: {
+      city: 'Toronto',
+      province: Province.ON
+    },
+    softwareTypes: [SoftwareType.SEC],
+    dataStorage: {
+      location: 'Canada, UK',
+      providers: ['Private Infrastructure'],
+      details: 'ISA Cybersecurity operates with over 30 years of experience, providing 24/7/365 monitoring and protection through their global SOCs.'
+    },
+    pros: ['30+ years of cybersecurity focus', '24/7/365 global protection', 'Comprehensive Cyber 360 service suite'],
+    cons: ['Enterprise-focused solutions', 'May be complex for smaller organizations'],
+    reviews: [],
+    description: 'A leading cybersecurity services provider offering a comprehensive suite of advisory and managed security services to protect organizations from evolving threats.'
+  },
+  {
+    id: 'petalhealth',
+    name: 'Petal Health',
+    solutions: ['Petal Patient Hub', 'Petal Workforce', 'Petal Billing'],
+    website: 'https://www.petal-health.com/en/',
+    linkedin: 'https://www.linkedin.com/company/petalmd/',
+    headquarters: {
+      city: 'Quebec City',
+      province: Province.QC
+    },
+    softwareTypes: [SoftwareType.HR, SoftwareType.AI, SoftwareType.SCM],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['AWS'],
+      details: 'Petal is SOC 2 Type II certified and PIPEDA compliant, meeting the highest standards of healthcare data security across Canada.'
+    },
+    pros: ['SOC 2 Type II certified', 'PIPEDA compliant', 'Significant reduction in scheduling time', 'Seamless integration with EMR/EHR'],
+    cons: ['Healthcare-specific focus limits general utility', 'Implementation may require coordination with various stakeholders'],
+    reviews: [],
+    description: 'A real-time healthcare orchestration platform that manages patient flow, workforce management, and revenue cycle management in one comprehensive system.'
+  },
+  {
+    id: 'processfusion',
+    name: 'Process Fusion',
+    solutions: ['PF360', 'Cloud Print Management', 'Document Management', 'Digital Workflow Automation'],
+    website: 'https://www.processfusion.com/',
+    linkedin: 'https://www.linkedin.com/company/process-fusion/',
+    headquarters: {
+      city: 'Toronto',
+      province: Province.ON
+    },
+    softwareTypes: [SoftwareType.ITS, SoftwareType.AI, SoftwareType.SEC],
+    dataStorage: {
+      location: 'Canada, UK, India',
+      providers: ['Azure', 'AWS'],
+      details: 'Process Fusion provides secure cloud-based management and document processing, ensuring compliance with enterprise-grade solutions.'
+    },
+    pros: ['End-to-end automation', 'AI-powered document processing', 'Secure cloud print management', 'Seamless integration'],
+    cons: ['May require significant process assessment', 'Cloud-focused (might not suit all legacy on-prem needs)'],
+    reviews: [],
+    description: 'A managed services provider specializing in Secure Information Exchange (SIX) and Business Process Automation solutions, helping organizations turn complex workflows into seamless experiences.'
+  },
+  {
+    id: 'cmc-microsystems',
+    name: 'CMC Microsystems',
+    solutions: ['CAD', 'FAB', 'LAB', 'Quantum Computing', 'Photonics Fabrication'],
+    website: 'https://www.cmc.ca/',
+    linkedin: 'https://www.linkedin.com/company/cmc-microsystems/',
+    headquarters: {
+      city: 'Montreal',
+      province: Province.QC
+    },
+    softwareTypes: [SoftwareType.ITS, SoftwareType.AI],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Private Infrastructure'],
+      details: 'CMC lowers the cost and complexity of technology adoption by creating and sharing platform technologies including access to state-of-the-art design, manufacturing, and testing capabilities.'
+    },
+    pros: ['Accelerates research and innovation', 'Access to state-of-the-art design and manufacturing', 'International network of researchers'],
+    cons: ['Highly specialized for advanced technologies', 'Primarily research and innovation focused'],
+    reviews: [],
+    description: 'A not-for-profit organization that accelerates research and innovation in advanced technologies including microelectronics, photonics, MEMS, IoT, AI, and quantum software and hardware.'
+  },
+  {
+    id: 'explorance',
+    name: 'Explorance',
+    solutions: ['Explorance Blue', 'Explorance Metrics That Matter', 'Explorance MLY', 'Explorance Bluepulse'],
+    website: 'https://www.explorance.com/',
+    linkedin: 'https://www.linkedin.com/company/explorance/',
+    headquarters: {
+      city: 'Montreal',
+      province: Province.QC
+    },
+    softwareTypes: [SoftwareType.HR, SoftwareType.AI],
+    dataStorage: {
+      location: 'Canada, US, Global',
+      providers: ['AWS', 'Azure'],
+      details: 'Explorance maintains high security standards and accessibility, ensuring data safety and responsible AI integration.'
+    },
+    pros: ['Global leader in feedback analytics', 'Trusted by Fortune 100 companies', 'AI-powered insights', 'Comprehensive feedback solutions'],
+    cons: ['Can be complex for small organizations', 'Requires significant data input for best results'],
+    reviews: [],
+    description: 'A global leader in feedback analytics solutions, empowering organizations with next-generation feedback analytics to drive purpose, impact, and growth.'
+  },
+  {
+    id: 'nethris',
+    name: 'Nethris',
+    solutions: ['Payroll Services', 'HR Management', 'Time Management', 'Employee Benefits'],
+    website: 'https://nethris.com/',
+    linkedin: 'https://www.linkedin.com/company/nethris/',
+    headquarters: {
+      city: 'Montreal',
+      province: Province.QC
+    },
+    softwareTypes: [SoftwareType.HR, SoftwareType.FIN],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['CGI Data Centres'],
+      details: 'Nethris is a CGI Payroll Services Centre Inc. company, ensuring secure and compliant payroll and HR data management within Canada.'
+    },
+    pros: ['All-in-one payroll and HR solution', 'Tailored for Canadian SMEs', 'High customer satisfaction', 'Secure and compliant'],
+    cons: ['Primarily focused on the Canadian market', 'May lack some advanced enterprise HR features'],
+    reviews: [],
+    description: 'A leading provider of all-in-one payroll and employee management solutions for SMEs across Canada, easing the administrative load and saving time.'
+  },
+  {
+    id: 'acomba',
+    name: 'Acomba',
+    solutions: ['Acomba Accounting', 'Acomba Inventory', 'Acomba Payroll', 'Acomba Invoicing'],
+    website: 'https://www.acomba.com/en/',
+    linkedin: 'https://www.linkedin.com/showcase/acombacom/',
+    headquarters: {
+      city: 'Montreal',
+      province: Province.QC
+    },
+    softwareTypes: [SoftwareType.FIN, SoftwareType.ERP],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['ACCEO Solutions Infrastructure'],
+      details: 'Acomba is a product of ACCEO Solutions, providing secure and reliable accounting and management software for the Canadian market.'
+    },
+    pros: ['Intuitive and performing software', 'Trusted by over 40,000 SMBs', 'Excellent technical support', 'Quebec standard compliant payroll'],
+    cons: ['Exclusively for the Canadian market', 'Classic desktop version may feel dated compared to cloud-native apps'],
+    reviews: [],
+    description: 'A comprehensive accounting and management software suite designed for SMBs, helping them manage accounting, inventory, payroll, and invoicing.'
+  },
+  {
+    id: 'optel-group',
+    name: 'OPTEL Group',
+    solutions: ['Optchain', 'VerifyBrand', 'Serialization', 'Aggregation', 'Vision Systems'],
+    website: 'https://www.optelgroup.com/en/',
+    linkedin: 'https://www.linkedin.com/company/optel-group/',
+    headquarters: {
+      city: 'Quebec City',
+      province: Province.QC
+    },
+    softwareTypes: [SoftwareType.SCM, SoftwareType.ITS],
+    dataStorage: {
+      location: 'Canada, Global',
+      providers: ['Private Cloud', 'Azure'],
+      details: 'OPTEL provides end-to-end traceability software that ensures regulatory compliance and enhances inventory tracking across global supply chains.'
+    },
+    pros: ['35 years of traceability expertise', 'Global presence and support', 'End-to-end supply chain visibility', 'Regulatory compliance focus'],
+    cons: ['Complex implementation for large supply chains', 'High specialization in track-and-trace'],
+    reviews: [],
+    description: 'A leading global provider of traceability, track-and-trace, and vision systems, helping companies collect, structure, and leverage supply chain data.'
+  },
+  {
+    id: 'smartfoodsafe',
+    name: 'SmartFoodSafe',
+    solutions: ['Smart Audit', 'Smart CAPA', 'Smart Compliance', 'Smart Doc', 'Smart EMP', 'Smart Lab', 'Smart Record', 'Smart Specification', 'Smart Supplier', 'Smart Training'],
+    website: 'https://smartfoodsafe.com/',
+    linkedin: 'https://www.linkedin.com/company/smartfoodsafe/',
+    headquarters: {
+      city: 'Dorval',
+      province: Province.QC
+    },
+    softwareTypes: [SoftwareType.SCM, SoftwareType.SEC, SoftwareType.AI],
+    dataStorage: {
+      location: 'Canada, Global',
+      providers: ['AWS'],
+      details: 'SmartFoodSafe provides AI-powered digital solutions for food safety management, ensuring compliance with global standards like HACCP and ISO 22000.'
+    },
+    pros: ['AI-powered food safety management', 'Comprehensive modular solutions', 'Fast implementation (less than 12 weeks)', 'Cost-effective modular pricing'],
+    cons: ['Niche focus on food safety', 'Requires staff training for full adoption'],
+    reviews: [],
+    description: 'An innovative software company providing state-of-the-art technology solutions for Quality, Food Safety, Regulatory, and Traceability management.'
+  },
+  {
+    id: 'simuhealth',
+    name: 'Simuhealth',
+    solutions: ['Smart Scheduling', 'Inventory Management', 'Accreditation Reporting', 'Staffing Management'],
+    website: 'https://www.simu.health/',
+    linkedin: 'https://www.linkedin.com/company/simuhealth-technologies',
+    headquarters: {
+      city: 'Vancouver',
+      province: Province.BC
+    },
+    softwareTypes: [SoftwareType.ERP, SoftwareType.AI, SoftwareType.HR],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Cloud Infrastructure'],
+      details: 'Simuhealth is a cloud-based ERP platform designed for healthcare simulation programs, ensuring data security and compliance for healthcare networks.'
+    },
+    pros: ['Automates manual scheduling', 'Inventory and equipment tracking', 'Accreditation-ready reporting', 'AI-powered insights'],
+    cons: ['Specific to healthcare simulation', 'AI features still in development'],
+    reviews: [],
+    description: 'A cloud-based ERP platform that automates the management of healthcare simulation, training, and compliance programs, replacing manual workflows with a modernized system.'
+  },
+  {
+    id: 'alphinat',
+    name: 'Alphinat',
+    solutions: ['SmartGuide', 'Bolt-on Portal for Municipal', 'SmartPortal for Dynamics', 'Customer Identity and Access Management'],
+    website: 'https://www.alphinat.com/en/',
+    linkedin: 'https://www.linkedin.com/company/alphinat/',
+    headquarters: {
+      city: 'Montreal',
+      province: Province.QC
+    },
+    softwareTypes: [SoftwareType.AI, SoftwareType.ITS],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Private Cloud', 'Azure'],
+      details: 'Alphinat provides secure RAD solutions, often deployed on-premises or in secure cloud environments for public sector and enterprise clients.'
+    },
+    pros: ['Rapid application development', 'Secure digital services', 'Easy integration with legacy systems'],
+    cons: ['Niche focus on portals', 'May require specific technical expertise for complex integrations'],
+    reviews: [],
+    description: 'A software company specializing in rapid application development (RAD) and secure portal solutions for the public sector and smart enterprises.'
+  },
+  {
+    id: 'prextra',
+    name: 'Prextra',
+    solutions: ['Prextra ERP'],
+    website: 'https://prextra.com/',
+    linkedin: 'https://www.linkedin.com/company/cdid-prextra/',
+    headquarters: {
+      city: 'Victoriaville',
+      province: Province.QC
+    },
+    softwareTypes: [SoftwareType.ERP, SoftwareType.SCM, SoftwareType.FIN],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Private Infrastructure'],
+      details: 'Prextra is developed by CDID and typically hosted in secure Canadian data centers, tailored for the needs of Quebec SMEs.'
+    },
+    pros: ['Tailored for Quebec SMEs', 'Comprehensive all-in-one ERP', 'Strong local support'],
+    cons: ['Primarily focused on the Quebec market', 'Limited global presence'],
+    reviews: [],
+    description: 'An ERP management software solution designed specifically for Quebec SMEs to streamline operations across various industries.'
+  },
+  {
+    id: 'remitbee',
+    name: 'Remitbee',
+    solutions: ['Online Money Transfer', 'Currency Exchange', 'Remitbee Business'],
+    website: 'https://www.remitbee.com/',
+    linkedin: 'https://www.linkedin.com/company/remitbee/',
+    headquarters: {
+      city: 'Mississauga',
+      province: Province.ON
+    },
+    softwareTypes: [SoftwareType.FIN],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['AWS'],
+      details: 'Remitbee uses secure cloud infrastructure to process financial transactions, ensuring compliance with FINTRAC regulations.'
+    },
+    pros: ['Competitive exchange rates', 'Low transaction fees', 'Fast and secure transfers'],
+    cons: ['Online-only service', 'Limited to specific international corridors'],
+    reviews: [],
+    description: 'A Canadian fintech company providing online money transfer and currency exchange services with a focus on affordability and speed.'
+  },
+  {
+    id: 'crypto4a',
+    name: 'Crypto4A',
+    solutions: ['Hardware Security Modules (HSMs)', 'QxVault', 'Secrets Management'],
+    website: 'https://www.crypto4a.com/',
+    linkedin: 'https://www.linkedin.com/company/crypto4a-technologies-inc-/',
+    headquarters: {
+      city: 'Ottawa',
+      province: Province.ON
+    },
+    softwareTypes: [SoftwareType.SEC],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['On-premises Hardware'],
+      details: 'Crypto4A provides physical hardware security modules that store cryptographic keys and secrets locally on-premises for maximum security.'
+    },
+    pros: ['Quantum-safe technology', 'FIPS-validated hardware', 'High-assurance security'],
+    cons: ['High cost of hardware', 'Requires specialized knowledge to manage'],
+    reviews: [],
+    description: 'A cybersecurity company providing quantum-safe hardware security modules (HSMs) and secrets management solutions for the quantum era.'
+  },
+  {
+    id: 'smartworkforce',
+    name: 'Smart Workforce AI',
+    solutions: ['AI Scheduling', 'Time Management', 'Workforce Management'],
+    website: 'https://www.smartworkforce.io/',
+    linkedin: 'https://www.linkedin.com/company/smartworkforce-ai/',
+    headquarters: {
+      city: 'Montreal',
+      province: Province.QC
+    },
+    softwareTypes: [SoftwareType.HR, SoftwareType.AI],
+    industries: [Industry.CROSS_INDUSTRY],
+    companySize: [CompanySize.SMALL, CompanySize.MEDIUM],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['AWS'],
+      details: 'Smart Workforce AI leverages cloud-based AI to optimize team scheduling and time management.'
+    },
+    pros: ['AI-powered optimization', 'Hassle-free time management', 'Modern user interface'],
+    cons: ['Newer platform', 'Limited enterprise track record compared to legacy players'],
+    reviews: [],
+    description: 'An AI-driven workforce management platform that simplifies scheduling and time tracking for teams.'
+  },
+  {
+    id: 'resolutai',
+    name: 'Resolut AI',
+    solutions: ['Accounts Receivable Automation', 'Intelligent Risk Identification'],
+    website: 'https://www.resolutai.com/',
+    linkedin: 'https://www.linkedin.com/company/resolutai/',
+    headquarters: {
+      city: 'Toronto',
+      province: Province.ON
+    },
+    softwareTypes: [SoftwareType.FIN, SoftwareType.AI],
+    industries: [Industry.FINANCE],
+    companySize: [CompanySize.SMALL, CompanySize.MEDIUM],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Azure'],
+      details: 'Resolut AI uses cloud-based AI to automate accounts receivable processes and identify financial risks.'
+    },
+    pros: ['Reduces Day Sales Outstanding (DSO)', 'Automates manual AR tasks', 'Intelligent risk insights'],
+    cons: ['Focused solely on accounts receivable', 'Requires integration with existing ERP/accounting systems'],
+    reviews: [],
+    description: 'An AI-powered accounts receivable automation and orchestration platform designed to help businesses get paid faster and smarter.'
+  },
+  {
+    id: 'wbm-technologies',
+    name: 'WBM Technologies',
+    solutions: ['Enterprise UX Platform', 'Enterprise Service Desk', 'End User Computing', 'Modern Workplace & AI Enablement', 'Managed Print', 'Managed IT Services'],
+    website: 'https://www.wbm.ca/',
+    linkedin: 'https://www.linkedin.com/company/wbm-technologies-lp/',
+    headquarters: {
+      city: 'Saskatoon',
+      province: Province.SK
+    },
+    softwareTypes: [SoftwareType.ITS, SoftwareType.AI],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Private Infrastructure'],
+      details: 'WBM operates out of Infrastructure Operations Centres across Western Canada, providing outcome-driven IT solutions through their patent-pending Enterprise UX Platform.'
+    },
+    pros: ['Outcome-driven IT solutions', 'Patent-pending Enterprise UX Platform', 'Strong Western Canadian presence', 'Expertise in Microsoft technology enablement'],
+    cons: ['Primarily focused on Western Canada', 'Managed services focus may not suit purely product-seeking clients'],
+    reviews: [],
+    description: 'A Western Canadian leader in outcome-driven IT solutions, providing a patent-pending Enterprise UX Platform that encompasses service desk, end-user computing, and AI enablement.'
+  },
+  {
+    id: 'beauceron-security',
+    name: 'Beauceron Security',
+    solutions: ['Beauceron Platform', 'Anti-Phishing', 'Security Awareness Training'],
+    website: 'https://www.beauceronsecurity.com/',
+    linkedin: 'https://www.linkedin.com/company/beauceron-security/',
+    headquarters: {
+      city: 'Fredericton',
+      province: Province.NB
+    },
+    softwareTypes: [SoftwareType.SEC],
+    industries: [Industry.CROSS_INDUSTRY],
+    companySize: [CompanySize.SMALL, CompanySize.MEDIUM, CompanySize.LARGE],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Azure'],
+      details: 'Beauceron Security provides a cloud-based platform that helps organizations manage cyber risk by focusing on the human element of security.'
+    },
+    pros: ['Focuses on behavioral change', 'Comprehensive security awareness', 'Strong reporting and analytics'],
+    cons: ['Requires ongoing employee engagement', 'Focused primarily on the human side of security'],
+    reviews: [],
+    description: 'A cybersecurity software company that helps organizations reduce cyber risk by motivating behavioral change through security awareness and anti-phishing solutions.'
+  },
+  {
+    id: 'smartskin-technologies',
+    name: 'SmartSkin Technologies',
+    solutions: ['Real-Time Line Intelligence', 'Pharma Seal Assurance', 'Container Handling Optimization'],
+    website: 'https://smartskintech.com/',
+    linkedin: 'https://www.linkedin.com/company/smartskin-technologies/',
+    headquarters: {
+      city: 'Fredericton',
+      province: Province.NB
+    },
+    softwareTypes: [SoftwareType.SCM],
+    industries: [Industry.MANUFACTURING, Industry.HEALTHCARE],
+    companySize: [CompanySize.MEDIUM, CompanySize.LARGE],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Private Cloud'],
+      details: 'SmartSkin provides real-time line intelligence for pharmaceutical and beverage manufacturers, using IoT sensors and AI to optimize production.'
+    },
+    pros: ['Real-time production line insights', 'Reduces breakage and defects', 'Highly specialized for pharma and beverage'],
+    cons: ['Requires hardware sensors on production lines', 'High specialization in container handling'],
+    reviews: [],
+    description: 'An industrial IoT and AI company providing real-time line intelligence to help manufacturers reduce breakage and optimize efficiency.'
+  },
+  {
+    id: 'medreddie',
+    name: 'MedReddie',
+    solutions: ['AI Healthcare Procurement Agent', 'Value-Based Procurement Platform'],
+    website: 'https://medreddie.com/',
+    linkedin: 'https://www.linkedin.com/company/medreddie/',
+    headquarters: {
+      city: 'Saint John',
+      province: Province.NB
+    },
+    softwareTypes: [SoftwareType.AI, SoftwareType.ITS],
+    industries: [Industry.HEALTHCARE],
+    companySize: [CompanySize.SMALL, CompanySize.MEDIUM],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['AWS'],
+      details: 'MedReddie uses AI to automate and optimize healthcare procurement, helping hospitals and suppliers drive value-based decisions.'
+    },
+    pros: ['AI-powered procurement automation', 'Reduces months of manual work', 'Focuses on value-based healthcare'],
+    cons: ['Specific to healthcare procurement', 'Relatively new platform'],
+    reviews: [],
+    description: 'An AI-powered healthcare procurement platform that helps hospitals and suppliers streamline procurement processes and drive value.'
+  },
+  {
+    id: 'versos-ai',
+    name: 'Versos AI',
+    solutions: ['Video Data Licensing', 'AI Training Data Management'],
+    website: 'https://versos.ai/',
+    linkedin: 'https://www.linkedin.com/company/versos-ai/',
+    headquarters: {
+      city: 'Fredericton',
+      province: Province.NB
+    },
+    softwareTypes: [SoftwareType.AI],
+    industries: [Industry.TECH, Industry.RETAIL],
+    companySize: [CompanySize.SMALL],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Cloud Infrastructure'],
+      details: 'Versos AI provides a platform for ethically licensing rights-cleared video archives for AI model training.'
+    },
+    pros: ['Ethical AI training data', 'Chain-of-custody licensing', 'Automated categorization and tagging'],
+    cons: ['Niche focus on video data for AI', 'Emerging market'],
+    reviews: [],
+    description: 'A platform that connects video supply to AI training demand, providing ethically licensed and rights-cleared video data for AI model builders.'
+  },
+  {
+    id: 'sonrai-security',
+    name: 'Sonrai Security',
+    solutions: ['Cloud Permissions Management', 'Identity Security', 'Privileged Access Management'],
+    website: 'https://sonraisecurity.com/',
+    linkedin: 'https://www.linkedin.com/company/sonrai-security/',
+    headquarters: {
+      city: 'Fredericton',
+      province: Province.NB
+    },
+    softwareTypes: [SoftwareType.SEC, SoftwareType.AI],
+    industries: [Industry.TECH, Industry.FINANCE],
+    companySize: [CompanySize.MEDIUM, CompanySize.LARGE],
+    dataStorage: {
+      location: 'Canada, US',
+      providers: ['AWS', 'Azure', 'GCP'],
+      details: 'Sonrai Security provides a cloud identity and access management platform that protects users and data across multi-cloud environments.'
+    },
+    pros: ['Comprehensive cloud identity security', 'Automates privilege management', 'Supports multi-cloud environments'],
+    cons: ['Complex for small cloud footprints', 'Requires deep integration with cloud providers'],
+    reviews: [],
+    description: 'A cloud security company providing identity and access management solutions to protect users and data in complex multi-cloud environments.'
+  },
+  {
+    id: 'mariner-innovations',
+    name: 'Mariner Innovations',
+    solutions: ['IT Professional Services', 'Digital Transformation', 'Application Modernization'],
+    website: 'https://marinerinnovations.com/',
+    linkedin: 'https://www.linkedin.com/company/mariner-innovations/',
+    headquarters: {
+      city: 'Saint John',
+      province: Province.NB
+    },
+    softwareTypes: [SoftwareType.ITS],
+    industries: [Industry.CROSS_INDUSTRY, Industry.GOVERNMENT],
+    companySize: [CompanySize.MEDIUM, CompanySize.LARGE],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Private Infrastructure'],
+      details: 'Mariner Innovations provides IT professional services and digital transformation solutions to clients across North America.'
+    },
+    pros: ['Deep expertise in IT services', 'Strong track record in digital transformation', 'Regional leader in Atlantic Canada'],
+    cons: ['Service-based model rather than product-based', 'Pricing can be premium for specialized consulting'],
+    reviews: [],
+    description: 'A leading provider of IT professional services and digital transformation solutions, helping organizations modernize their applications and infrastructure.'
+  },
+  {
+    id: 'the-learning-bar',
+    name: 'The Learning Bar',
+    solutions: ['OurSCHOOL', 'Confident Learners', 'Early Years Evaluation'],
+    website: 'https://thelearningbar.com/',
+    linkedin: 'https://www.linkedin.com/company/the-learning-bar/',
+    headquarters: {
+      city: 'Fredericton',
+      province: Province.NB
+    },
+    softwareTypes: [SoftwareType.ITS],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Private Cloud'],
+      details: 'The Learning Bar provides research-based educational tools and assessments to improve student outcomes globally.'
+    },
+    pros: ['Research-based educational tools', 'Global impact on student outcomes', 'Comprehensive assessment solutions'],
+    cons: ['Specific to the education sector', 'Requires school-wide implementation'],
+    reviews: [],
+    description: 'An educational research and software company providing tools to help schools and districts improve student learning and well-being.'
+  },
+  {
+    id: 'clinicglide',
+    name: 'ClinicGlide',
+    solutions: ['Clinic Management Software', 'Patient Scheduling', 'Healthcare Analytics'],
+    website: 'https://www.clinicglide.com/',
+    linkedin: 'https://www.linkedin.com/company/clinicglide/',
+    headquarters: {
+      city: 'Fredericton',
+      province: Province.NB
+    },
+    softwareTypes: [SoftwareType.ITS],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['AWS'],
+      details: 'ClinicGlide provides cloud-based clinic management software designed to streamline healthcare operations and patient care.'
+    },
+    pros: ['Streamlined clinic operations', 'User-friendly patient scheduling', 'Healthcare-focused analytics'],
+    cons: ['Niche focus on clinic management', 'Requires staff adoption for full benefit'],
+    reviews: [],
+    description: 'A healthcare software company providing clinic management solutions to help healthcare providers deliver better patient care.'
+  },
+  {
+    id: 'kognitiv-spark',
+    name: 'Kognitiv Spark',
+    solutions: ['RemoteSpark', 'Augmented Reality Remote Support', 'Connected Worker Solutions'],
+    website: 'https://www.kognitivspark.com/',
+    linkedin: 'https://www.linkedin.com/company/kognitiv-spark/',
+    headquarters: {
+      city: 'Fredericton',
+      province: Province.NB
+    },
+    softwareTypes: [SoftwareType.ITS, SoftwareType.AI],
+    industries: [Industry.MANUFACTURING, Industry.ENERGY, Industry.GOVERNMENT],
+    companySize: [CompanySize.MEDIUM, CompanySize.LARGE],
+    dataStorage: {
+      location: 'Canada',
+      providers: ['Azure'],
+      details: 'Kognitiv Spark provides augmented reality solutions for remote support, allowing experts to guide frontline workers in real-time.'
+    },
+    pros: ['Real-time AR remote guidance', 'Hands-free worker support', 'Reduces travel costs and downtime'],
+    cons: ['Requires AR hardware (e.g., HoloLens)', 'Best suited for complex industrial environments'],
+    reviews: [],
+    description: 'A software company specializing in augmented reality solutions for remote support and connected worker applications in industrial sectors.'
   },
 ];

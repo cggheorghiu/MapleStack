@@ -19,27 +19,45 @@ import {
   Check
 } from 'lucide-react';
 import { VENDORS } from './data';
-import { Province, SoftwareType, Vendor } from './types';
+import { Province, SoftwareType, Vendor, Industry, CompanySize } from './types';
 
 const PROVINCES = Object.values(Province);
 const SOFTWARE_TYPES = Object.values(SoftwareType);
+const INDUSTRIES = Object.values(Industry);
+const COMPANY_SIZES = Object.values(CompanySize);
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProvince, setSelectedProvince] = useState<Province | 'All'>('All');
   const [selectedTypes, setSelectedTypes] = useState<SoftwareType[]>([]);
+  const [selectedIndustries, setSelectedIndustries] = useState<Industry[]>([]);
+  const [selectedSizes, setSelectedSizes] = useState<CompanySize[]>([]);
   const [selectedVendor, setSelectedVendor] = useState<Vendor | null>(null);
-  const [activeDropdown, setActiveDropdown] = useState<'province' | 'type' | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<'province' | 'type' | 'industry' | 'size' | null>(null);
 
   const resetFilters = () => {
     setSearchQuery('');
     setSelectedProvince('All');
     setSelectedTypes([]);
+    setSelectedIndustries([]);
+    setSelectedSizes([]);
   };
 
   const toggleType = (type: SoftwareType) => {
     setSelectedTypes(prev => 
       prev.includes(type) ? prev.filter(t => t !== type) : [...prev, type]
+    );
+  };
+
+  const toggleIndustry = (industry: Industry) => {
+    setSelectedIndustries(prev => 
+      prev.includes(industry) ? prev.filter(i => i !== industry) : [...prev, industry]
+    );
+  };
+
+  const toggleSize = (size: CompanySize) => {
+    setSelectedSizes(prev => 
+      prev.includes(size) ? prev.filter(s => s !== size) : [...prev, size]
     );
   };
 
@@ -49,9 +67,14 @@ export default function App() {
                           vendor.solutions.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()));
       const matchesProvince = selectedProvince === 'All' || vendor.headquarters.province === selectedProvince;
       const matchesType = selectedTypes.length === 0 || selectedTypes.some(t => vendor.softwareTypes.includes(t));
-      return matchesSearch && matchesProvince && matchesType;
+      const matchesIndustry = selectedIndustries.length === 0 || 
+                             (vendor.industries && selectedIndustries.some(i => vendor.industries?.includes(i)));
+      const matchesSize = selectedSizes.length === 0 || 
+                         (vendor.companySize && selectedSizes.some(s => vendor.companySize?.includes(s)));
+      
+      return matchesSearch && matchesProvince && matchesType && matchesIndustry && matchesSize;
     }).sort((a, b) => a.name.localeCompare(b.name));
-  }, [searchQuery, selectedProvince, selectedTypes]);
+  }, [searchQuery, selectedProvince, selectedTypes, selectedIndustries, selectedSizes]);
 
   return (
     <div className="min-h-screen bg-[#F5F5F5] font-sans text-slate-900">
@@ -198,7 +221,119 @@ export default function App() {
                   </AnimatePresence>
                 </div>
 
-                {(searchQuery || selectedProvince !== 'All' || selectedTypes.length > 0) && (
+                {/* Industry Dropdown */}
+                <div className="relative">
+                  <button
+                    onClick={() => setActiveDropdown(activeDropdown === 'industry' ? null : 'industry')}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all border ${
+                      selectedIndustries.length > 0
+                        ? 'bg-emerald-50 border-emerald-200 text-emerald-700' 
+                        : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300'
+                    }`}
+                  >
+                    <Building2 className="w-4 h-4" />
+                    {selectedIndustries.length === 0 ? 'Industry' : `${selectedIndustries.length} Selected`}
+                    <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === 'industry' ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  <AnimatePresence>
+                    {activeDropdown === 'industry' && (
+                      <>
+                        <div className="fixed inset-0 z-40" onClick={() => setActiveDropdown(null)} />
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute right-0 mt-2 w-64 bg-white border border-slate-200 rounded-2xl shadow-xl z-50 overflow-hidden py-2"
+                        >
+                          <div className="px-4 py-2 border-b border-slate-100 flex items-center justify-between mb-1">
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Multi-select</span>
+                            {selectedIndustries.length > 0 && (
+                              <button 
+                                onClick={() => setSelectedIndustries([])}
+                                className="text-[10px] font-bold text-rose-600 uppercase hover:text-rose-700"
+                              >
+                                Clear
+                              </button>
+                            )}
+                          </div>
+                          <div className="max-h-64 overflow-y-auto">
+                            {INDUSTRIES.map(i => (
+                              <button
+                                key={i}
+                                onClick={() => toggleIndustry(i)}
+                                className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-50 transition-colors flex items-center justify-between ${
+                                  selectedIndustries.includes(i) ? 'text-emerald-700 font-bold bg-emerald-50/50' : 'text-slate-600'
+                                }`}
+                              >
+                                {i}
+                                {selectedIndustries.includes(i) && <Check className="w-4 h-4" />}
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      </>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Company Size Dropdown */}
+                <div className="relative">
+                  <button
+                    onClick={() => setActiveDropdown(activeDropdown === 'size' ? null : 'size')}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all border ${
+                      selectedSizes.length > 0
+                        ? 'bg-emerald-50 border-emerald-200 text-emerald-700' 
+                        : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300'
+                    }`}
+                  >
+                    <Users className="w-4 h-4" />
+                    {selectedSizes.length === 0 ? 'Size' : `${selectedSizes.length} Selected`}
+                    <ChevronDown className={`w-4 h-4 transition-transform ${activeDropdown === 'size' ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  <AnimatePresence>
+                    {activeDropdown === 'size' && (
+                      <>
+                        <div className="fixed inset-0 z-40" onClick={() => setActiveDropdown(null)} />
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute right-0 mt-2 w-64 bg-white border border-slate-200 rounded-2xl shadow-xl z-50 overflow-hidden py-2"
+                        >
+                          <div className="px-4 py-2 border-b border-slate-100 flex items-center justify-between mb-1">
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Multi-select</span>
+                            {selectedSizes.length > 0 && (
+                              <button 
+                                onClick={() => setSelectedSizes([])}
+                                className="text-[10px] font-bold text-rose-600 uppercase hover:text-rose-700"
+                              >
+                                Clear
+                              </button>
+                            )}
+                          </div>
+                          <div className="max-h-64 overflow-y-auto">
+                            {COMPANY_SIZES.map(s => (
+                              <button
+                                key={s}
+                                onClick={() => toggleSize(s)}
+                                className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-50 transition-colors flex items-center justify-between ${
+                                  selectedSizes.includes(s) ? 'text-emerald-700 font-bold bg-emerald-50/50' : 'text-slate-600'
+                                }`}
+                              >
+                                {s}
+                                {selectedSizes.includes(s) && <Check className="w-4 h-4" />}
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      </>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {(searchQuery || selectedProvince !== 'All' || selectedTypes.length > 0 || selectedIndustries.length > 0 || selectedSizes.length > 0) && (
                   <button 
                     onClick={resetFilters}
                     className="p-2.5 text-slate-400 hover:text-rose-600 transition-colors"
@@ -220,11 +355,11 @@ export default function App() {
             <div className="mb-6 flex items-center justify-between">
               <h2 className="text-lg font-semibold text-slate-800">
                 {filteredVendors.length} Vendors Found
-                {(selectedProvince !== 'All' || selectedTypes.length > 0) && (
+                {(selectedProvince !== 'All' || selectedTypes.length > 0 || selectedIndustries.length > 0 || selectedSizes.length > 0) && (
                   <span className="ml-2 text-sm font-normal text-slate-500">
-                    in {selectedProvince !== 'All' ? selectedProvince : ''} 
-                    {selectedProvince !== 'All' && selectedTypes.length > 0 ? ' • ' : ''}
-                    {selectedTypes.length > 0 ? selectedTypes.join(', ') : ''}
+                    {selectedProvince !== 'All' ? `in ${selectedProvince}` : ''} 
+                    {selectedProvince !== 'All' && (selectedTypes.length > 0 || selectedIndustries.length > 0 || selectedSizes.length > 0) ? ' • ' : ''}
+                    {[...selectedTypes, ...selectedIndustries, ...selectedSizes].join(', ')}
                   </span>
                 )}
               </h2>
@@ -262,6 +397,19 @@ export default function App() {
                       <div className="flex items-center gap-1 text-slate-500 text-sm mb-4">
                         <MapPin className="w-3 h-3" />
                         {vendor.headquarters.city}, {vendor.headquarters.province}
+                      </div>
+
+                      <div className="flex flex-wrap gap-1 mb-4">
+                        {vendor.industries?.slice(0, 2).map(industry => (
+                          <span key={industry} className="px-2 py-0.5 bg-blue-50 text-blue-600 text-[9px] font-bold uppercase tracking-wider rounded">
+                            {industry}
+                          </span>
+                        ))}
+                        {vendor.companySize?.slice(0, 1).map(size => (
+                          <span key={size} className="px-2 py-0.5 bg-purple-50 text-purple-600 text-[9px] font-bold uppercase tracking-wider rounded">
+                            {size}
+                          </span>
+                        ))}
                       </div>
 
                       <p className="text-sm text-slate-600 line-clamp-2 mb-4 h-10">
@@ -325,10 +473,20 @@ export default function App() {
                   <div>
                     <div className="flex items-center gap-3 mb-1">
                       <h2 className="text-3xl font-bold text-slate-900">{selectedVendor.name}</h2>
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap gap-2">
                         {selectedVendor.softwareTypes.map(type => (
                           <span key={type} className="px-2 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-wider rounded-md">
                             {type}
+                          </span>
+                        ))}
+                        {selectedVendor.industries?.map(industry => (
+                          <span key={industry} className="px-2 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wider rounded-md">
+                            {industry}
+                          </span>
+                        ))}
+                        {selectedVendor.companySize?.map(size => (
+                          <span key={size} className="px-2 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold uppercase tracking-wider rounded-md">
+                            {size}
                           </span>
                         ))}
                       </div>

@@ -30,6 +30,27 @@ export enum SoftwareType {
   ITS = 'IT Services'
 }
 
+export enum Industry {
+  RETAIL = 'Retail',
+  MANUFACTURING = 'Manufacturing',
+  HEALTHCARE = 'Healthcare',
+  FINANCE = 'Finance',
+  GOVERNMENT = 'Government',
+  EDUCATION = 'Education',
+  LOGISTICS = 'Logistics',
+  TECH = 'Technology',
+  ENERGY = 'Energy',
+  CONSTRUCTION = 'Construction',
+  PROFESSIONAL_SERVICES = 'Professional Services',
+  CROSS_INDUSTRY = 'Cross-industry'
+}
+
+export enum CompanySize {
+  SMALL = '1-50 employees',
+  MEDIUM = '51-500 employees',
+  LARGE = '501+ employees'
+}
+
 export interface Testimonial {
   author: string;
   role: string;
@@ -56,6 +77,8 @@ export interface Vendor {
     province: Province;
   };
   softwareTypes: SoftwareType[];
+  industries?: Industry[];
+  companySize?: CompanySize[];
   dataStorage: {
     location: string;
     providers: string[];
