@@ -27,7 +27,24 @@ export enum SoftwareType {
   LEGAL = 'Legal Tech',
   LOG = 'Logistics',
   MAR = 'Marketing/Social Media',
-  ITS = 'IT Services'
+  ITS = 'IT Services',
+  POS = 'Point of Sale',
+  GIS = 'GIS & Geospatial',
+  EDU = 'Education',
+  HEALTH = 'Healthcare',
+  CAD = 'CAD/Engineering',
+  AERO = 'Aerospace/Drone',
+  BANK = 'Banking',
+  FUND = 'Fundraising',
+  IOT = 'IoT',
+  BI = 'Business Intelligence',
+  ROBOT = 'Robotics',
+  RESEARCH = 'Market Research',
+  MEDIA = 'Media & Publishing',
+  COMPLIANCE = 'Compliance',
+  BACKUP = 'Backup & Recovery',
+  COMMS = 'Communications',
+  SCHEDULING = 'Scheduling'
 }
 
 export enum Industry {
@@ -42,7 +59,24 @@ export enum Industry {
   ENERGY = 'Energy',
   CONSTRUCTION = 'Construction',
   PROFESSIONAL_SERVICES = 'Professional Services',
-  CROSS_INDUSTRY = 'Cross-industry'
+  CROSS_INDUSTRY = 'Cross-industry',
+  HOSPITALITY = 'Hospitality',
+  FITNESS = 'Fitness',
+  AUTOMOTIVE = 'Automotive',
+  NON_PROFIT = 'Non-profit',
+  REAL_ESTATE = 'Real Estate',
+  MARITIME = 'Maritime',
+  MUNICIPAL = 'Municipal',
+  FORESTRY = 'Forestry',
+  LEGAL = 'Legal',
+  ECOM = 'E-commerce',
+  PHARMA = 'Pharmaceuticals',
+  AGRI = 'Agriculture',
+  CLEAN = 'CleanTech',
+  TRAVEL = 'Travel',
+  MEDIA = 'Media',
+  RESIDENTIAL = 'Residential',
+  UTILITIES = 'Utilities'
 }
 
 export enum CompanySize {
@@ -88,4 +122,9 @@ export interface Vendor {
   cons: string[];
   reviews: Review[];
   description: string;
+  pricing?: {
+    plans?: { name: string; price: string; features: string[] }[];
+    details?: string;
+    url?: string;
+  };
 }
